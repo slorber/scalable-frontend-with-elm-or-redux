@@ -46,9 +46,17 @@ The button can be active or inactive. It is green when active and red when inact
 
 #### 3) A counter value
 
-The counter value should be incremented everytime a `NEW_GIF` action is fired from any NewGif component, no matter the nesting.
+The counter value should be incremented everytime a `NEW_GIF` action is fired from any NewGif component, no matter the nesting, but the incrementation amount is not fixed.
 
-Business rule: if the current counter value is > 10 AND the button is active, then the counter value is incremented by 2 instead of 1.
+**Business rule**: 
+```
+if ( ( counter above 10 ) && ( button is active ) ) { 
+  increment by 2 
+} 
+else { 
+  increment by 1 
+}
+```
 
 #### 4) The 3 components should be decoupled
 
