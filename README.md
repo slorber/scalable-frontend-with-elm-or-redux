@@ -60,9 +60,15 @@ else {
 
 #### 4) The 3 components should be decoupled
 
-The 3 components (NewGif/Counter/Button) should be totally decoupled and not see each others in any way. 
+Somehow this problem is easy to solve in a way that creates a lot of coupling between components.
+
+The 3 components (NewGif/Counter/Button) should be decoupled and not see each others in any way. 
 They can't import stuff from each others. 
 Ideally, in a JS based solutions, one could be able to publish each 3 components in separate NPM packages that don't depend on each others.
+
+The aim of decoupling the components is that a team can take ownership of each component. Then another team is responsible of making all the components work nicely together, and you already have split the work into 4 teams.
+
+For example, the NewGif component should not be aware of the presence of the existance of a counter, deeply hidden in a little stats popup of our app. If this counter had to be removed by the business, it's place in dom tree updated, or it's business rule be changed, the team maintaining the NewGif widget should rather not have to know about that.
 
 
 # Good luck
