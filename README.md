@@ -58,7 +58,7 @@ else {
 }
 ```
 
-#### 4) The 3 components should be decoupled
+#### 4) The app should focus maintainability / scalability / decoupling
 
 Somehow this problem is easy to solve in a way that creates a lot of coupling between components.
 
@@ -69,6 +69,8 @@ Ideally, in a JS based solutions, one could be able to publish each 3 components
 The aim of decoupling the components is that a team can take ownership of each component. Then another team is responsible of making all the components work nicely together, and you already have split the work into 4 teams.
 
 For example, the NewGif component should not be aware of the presence of the existance of a counter, deeply hidden in a little stats popup of our app. If this counter had to be removed by the business, it's place in dom tree updated, or it's business rule be changed, the team maintaining the NewGif widget should rather not have to know about that.
+
+It should also be easy to move the position of components. For example imagine the button is top left of your app, and the business now wants it inside a popup, bottom right: this move of component in the tree should rather be easy to make (ie without having to modify all parent components, for example).
 
 
 # Good luck
