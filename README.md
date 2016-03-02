@@ -64,35 +64,15 @@ I'd like to see solutions in any language (JS / ES6 / Elm / Typescript ...) or t
 
 # Hints
 
+Here are just some ideas I or some others had on how this problem can be solved.
 
-Here are just some ideas I have on how this problem can be solved.
-
-#### Use 2 mailboxes/addresses/action types...
-
-NewGif component has a local state, but sometimes something that happens inside this component should trigger local changes but also changes in other places of the app.
-
-Nested actions of Elm works really great for local state, but it's hard to listen for NEW_GIF actions in other components as they are nested. 
-
-In Flux/Redux, actions are not nested, so you can easily listen for `NEW_GIF` actions from anywhere, but it's hard to manage a bunch of nested NewGif components without the ceremony of having to assign each of them an UUID, creating a collection/store/reducer for a list of NewGif components... Many will use `this.setState()` with React and only dispatch `NEW_GIF` when needed because it is more easy to manage.
- 
-I think we can work on combining these 2 approachs together. Decoupled components could only dispatch local actions that only themselves are aware of, and then a layer above we couple these decoupled components to our app by propagating the local event above the stack (nested event), AND dispatching and global application event (flat).
-
-
-#### Use Sagas
-
-In the backend world, the saga is a piece of software that permits to coordinate long running transactions (eventual consistency), and transactions across different bounded contexts (domain driven design jargon).
-
-It is gaining popularity in frontend world by with [redux-sagas](https://github.com/yelouafi/redux-saga) from @yelouafi (even if most people only use it now only as a replacement for redux-thunks). [See also](http://stackoverflow.com/questions/34570758/why-do-we-need-middleware-for-async-flow-in-redux/34623840#34623840)
-
-To simplify this for frontend world, imagine there is widget1 and widget2. When some button on widget1 is clicked, then it should have an effect on widget2. Instead of coupling the 2 widgets together (ie widget1 dispatch an action that targets widget2), widget1 only dispatch that its button was clicked. Then the saga listen for this button click and then update widget2 by dispaching a new event that widget2 is aware of.
-
- The 2 widgets are now bounded contexts that can live separately. They do not need each others to be consistent and can be reused in other apps as well. The saga is the coupling point between the two widgets that coordinate them in a meaningful way for your business.
-
+- [Use sagas](https://github.com/slorber/scalable-frontend-with-elm-or-redux/issues/1)
+- [Use 2 mailboxes/addresses/action types](https://github.com/slorber/scalable-frontend-with-elm-or-redux/issues/2)
 
 # Submit your solution
 
+If you would like to propose your solution, don't hesitate to.
 
-If you would like to propose your solution, don't hesitate to 
-- request feedbacks in a github issue related to your proposal
-- make a pull request with your final solution
-- create a folder with an understandable name. For me something like `redux-elmish-saga-slorber` or `elm-2mailboxes-slorber`
+- Give a good name to your solution. For me something like `redux-elmish-saga-slorber` or `elm-2mailboxes-slorber`
+- Create an issue with your solution name, to get feedbacks
+- Make a pull request, create a folder with your solution name
