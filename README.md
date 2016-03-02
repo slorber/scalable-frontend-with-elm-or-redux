@@ -50,7 +50,7 @@ The counter value should be incremented everytime a `NEW_GIF` action is fired fr
 
 **Business rule**: 
 ```
-if ( ( counter above 10 ) && ( button is active ) ) { 
+if ( ( counter >= 10 ) && ( buttonState === "active" ) ) { 
   increment by 2 
 } 
 else { 
