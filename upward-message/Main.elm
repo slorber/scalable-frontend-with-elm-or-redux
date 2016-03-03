@@ -17,7 +17,7 @@ type Action
   | PairOfPair RandomPairOfPair.Action
   | Button Button.Action
   | Counter Counter.Action
-  | NewGif
+  | SomeGifUpdated
 
 
 type alias Model =
@@ -52,8 +52,15 @@ init =
     ( model, Effects.batch [ Effects.map Top topFx, Effects.map Pair pairFx, Effects.map PairOfPair pairOfPaiFx ] )
 
 
+{-| This address will be passed to each sub-component's `update` function. They
+are expected to send to it whenever a GIF is updated. We don't care what they
+send (hence the `always`) since the message itself suffices to represent the
+gif-updated event. If we did care about, say, which GIF component was updated we
+could use different tags than just `SomeGifUpdated` or could add parameters to
+the tag. There would be no necessary change to the components. -}
+context : Signal.Address a
 context =
-  Signal.forwardTo actionsMailbox.address (always NewGif)
+  Signal.forwardTo actionsMailbox.address (always SomeGifUpdated)
 
 
 update : Action -> Model -> ( Model, Effects Action )
@@ -87,7 +94,7 @@ update action model =
       in
         ( { model | button = button' }, Effects.none )
 
-    NewGif ->
+    SomeGifUpdated ->
       let
         counter' =
           Counter.increment (Button.isActive model.button) model.counter
@@ -141,6 +148,8 @@ port tasks =
   app.tasks
 
 
+{-| This is where we receive messages from the components, wrapped as Actions
+that we feed back into the app via `app.inputs`. -}
 actionsMailbox : Signal.Mailbox Action
 actionsMailbox =
-  Signal.mailbox NewGif
+  Signal.mailbox SomeGifUpdated
