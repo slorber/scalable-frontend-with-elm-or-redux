@@ -1,0 +1,23 @@
+{
+  "name": "tom-binary-tree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "Giulio Canti <giulio.canti@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "0.9.1",
+    "react": "0.14.7",
+    "react-dom": "0.14.7",
+    "tom": "0.4.0"
+  },
+  "devDependencies": {
+    "babel": "5.8.34",
+    "babel-core": "5.8.34",
+    "babel-loader": "5.3.2",
+    "webpack": "1.12.14"
+  }
+}
