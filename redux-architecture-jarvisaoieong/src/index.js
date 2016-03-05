@@ -3,14 +3,13 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 
 import configureStore from './store/configureStore';
-import initialState from './initialState';
-import App from 'containers/App';
+import {Main} from 'modules/main';
 
-const store = configureStore({initialState});
+const store = configureStore();
 
 render(
   <Provider store={store}>
-    <App />
+    <Main />
   </Provider>
 ,
   document.getElementById('app')

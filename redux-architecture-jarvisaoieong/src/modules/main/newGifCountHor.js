@@ -1,7 +1,7 @@
 import {loop, Effects} from '@jarvisaoieong/redux-loop';
 import _ from 'lodash';
 import {NEW_GIF} from 'modules/randomGif';
-import {newGifCount} from 'actions';
+import {newGifCount} from './actions';
 
 export default (path, reducer) => (state, action) => {
   const {model, effect} = reducer(state, action);
