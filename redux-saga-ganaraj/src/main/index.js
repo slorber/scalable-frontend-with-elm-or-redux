@@ -11,7 +11,7 @@ import * as randomGifList from '../randomGifList'
 
 export const reducer = combineReducers(
   {
-    counter: counter.reducer,
+    // counter: counter.reducer,
     button: theButton.reducer,
     gif: randomGif.reducer,
     gifList: randomGifList.reducer
@@ -49,48 +49,15 @@ export const App = () => (
 
     <h2>Counter Example:</h2>
     <div className="container">
-      <counter.Container selector="solitaryCounter"/>
+      <counter.Container/>
     </div>
 
     <hr/>
-
-    <h2>Button Example:</h2>
+    
+    <h2>Counter Example 2:</h2>
     <div className="container">
-      <theButton.Container/>
+      <counter.Container/>
     </div>
 
-    <hr/>
-
-    <h2>Random GIF Example:</h2>
-    <div className="container">
-      {<randomGif.Container selector="randomGif" 
-      topic="cats"
-      />}
-    </div>
-
-    <hr/>
-
-    <h2>Pair of Random GIF Example:</h2>
-    <div className="container">
-      {<randomGifPair.Container 
-          selector="randomGifPair"
-          />}
-    </div>
-
-    <hr/>
-
-    <h2>Pair of Pair of Random GIF Example:</h2>
-    <div className="container">
-      {<randomGifPairOfPair.Container selector="pairofPairs"
-          />}
-    </div>
-
-    <hr/>
-
-    <h2>List of Random GIF Example:</h2>
-    <div className="container">
-      {<randomGifList.Container selector="randomGifList"
-          />}
-    </div>
   </div>
 )

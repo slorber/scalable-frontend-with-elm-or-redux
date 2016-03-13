@@ -1,8 +1,9 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import localState from '../localState';
-import * as actions from './actions'
+import localState from '../LocalProvider';
+import * as actions from './actions';
+import reducer from './reducer';
 
 export const Counter = ({ count, increment, decrement }) => (
   <div>
@@ -20,18 +21,21 @@ export const Counter = ({ count, increment, decrement }) => (
 
 function mapStateToProps(state, ownProps) {
   return {
-    count: state.counter[ownProps.selector].count
+    count: state.local
   }
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    increment: () => dispatch(actions.increment(ownProps.selector)),
-    decrement: () => dispatch(actions.decrement(ownProps.selector))
+    increment: () => dispatch(actions.increment()),
+    decrement: () => dispatch(actions.decrement())
   };
 }
 
 export default localState(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Counter));
+)(Counter),
+reducer,
+[actions.INCREMENT, actions.DECREMENT]
+);

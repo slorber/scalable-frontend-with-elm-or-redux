@@ -1,37 +1,14 @@
-import { INCREMENT, DECREMENT } from './actions'
-import {
-  INITIALISE_COMPONENT_STATE,
-  REMOVE_COMPONENT_STATE
-} from '../localState';
+import { INCREMENT, DECREMENT } from './actions';
 
-const initialState = {};
+const initialState = 0;
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case INITIALISE_COMPONENT_STATE:
-    case REMOVE_COMPONENT_STATE:
-      return {
-        ...state,
-        [action.selector]: {
-          ...state,
-          count: 0
-        }
-      };
     case INCREMENT:
-      return {
-        ...state,
-        [action.selector]: {
-          count: state[action.selector].count + 1
-        }
-      };
+      return state+1;
     case DECREMENT:
-    return {
-      ...state,
-      [action.selector]: {
-        count: state[action.selector].count - 1
-      }
-    };
+    return state-1;
     default:
-      return state
+      return state;
   }
 }
