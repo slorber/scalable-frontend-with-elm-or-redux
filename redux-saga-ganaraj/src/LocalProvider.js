@@ -1,7 +1,6 @@
 import React, {createElement, Component} from 'react';
 import Provider from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import ReactDOM from 'react-dom';
 
 const callbacks = [];
 
@@ -15,25 +14,38 @@ export const localStateMiddleware = () => {
     };
 };
 
-const localState = (component, localReducer, localActions) => {
+const localState = (component, localReducer) => {
   
   class LocalProvider extends Component {
     constructor(props, context) {
         super(props, context);
-        this.store = context.store;
+        this.parentStore = context.store;
         this.listener = this.listener.bind(this);
         this.localStore = createStore(localReducer, 
             applyMiddleware(this.listener));
         callbacks.push(this.globalStoreListener.bind(this));
+        this.overrideGetState();
+        // this.overrideDispatch();
+        
+    }
+    
+    overrideDispatch() {
+        this.originalLocalDispatch = this.localStore.dispatch;
+        
+    }
+    
+    overrideGetState(){
         const oldGetState = this.localStore.getState;
         this.localStore.getState = () => ({
-                ...this.store.getState(),
+                ...this.parentStore.getState(),
                 local: oldGetState()
             });
     }
     
     globalStoreListener(action) {
-        if(!localActions.includes(action.type)) {
+        if(action.component !== component.displayName) {
+            console.log('local dispatch');
+            action.component = component.displayName;
             this.localStore.dispatch(action);
         }
         
@@ -43,11 +55,13 @@ const localState = (component, localReducer, localActions) => {
         return { store: this.localStore };
     }
     
-    listener({getState}) {
+    listener() {
         return (next) => (action) => {
             let returnValue = next(action);
-            this.store.dispatch(action);
-            console.dir(ReactDOM.findDOMNode(this));
+            if(action.component !== component.displayName) {
+                action.component = component.displayName;
+                this.parentStore.dispatch(action);
+            }
             return returnValue;
         };
     };
