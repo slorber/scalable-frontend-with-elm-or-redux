@@ -2,19 +2,7 @@ import React, {createElement, Component} from 'react';
 import Provider from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-const callbacks = [];
-
-export const localStateMiddleware = () => {
-    return (next) => (action) => {
-        let returnValue = next(action);
-        callbacks.forEach( (cb) => {
-            cb(action);
-        });
-        return returnValue;
-    };
-};
-
-const localState = (component, name, localReducer, mws=[]) => {
+const localState = (component, localReducer, mws=[]) => {
   
   class LocalProvider extends Component {
     constructor(props, context) {
@@ -23,7 +11,6 @@ const localState = (component, name, localReducer, mws=[]) => {
         this.listener = this.listener.bind(this);
         this.localStore = createStore(localReducer, 
             applyMiddleware.apply(null, [this.listener, ...mws]));
-        callbacks.push(this.globalStoreListener.bind(this));
         this.overrideGetState();        
     }
 
@@ -35,14 +22,6 @@ const localState = (component, name, localReducer, mws=[]) => {
             });
     }
     
-    globalStoreListener(action) {
-        if(action.component !== name) {
-            console.log('from global', action);
-            action.component = name;
-            this.localStore.dispatch(action);
-        }
-    }
-    
     getChildContext() {
         return { store: this.localStore };
     }
@@ -50,11 +29,7 @@ const localState = (component, name, localReducer, mws=[]) => {
     listener() {
         return (next) => (action) => {
             let returnValue = next(action);
-            if(action.component !== name) {
-                action.component = name;
-                console.log('parent dispatch');
-                this.parentStore.dispatch(action);
-            }
+            this.parentStore.dispatch(action);
             return returnValue;
         };
     };

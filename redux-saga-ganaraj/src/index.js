@@ -7,12 +7,11 @@ import { App, saga, reducer } from './main'
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
-import {localStateMiddleware} from './LocalProvider';
 
 const logger = createLogger();
 
 const store = createStore(reducer, 
-    applyMiddleware(localStateMiddleware, logger)
+    applyMiddleware(logger)
     );
 
 render(

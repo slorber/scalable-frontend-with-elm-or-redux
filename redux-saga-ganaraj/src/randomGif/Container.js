@@ -68,7 +68,6 @@ export default localState(connect(
   mapStateToProps,
   mapDispatchToProps
 )(Component),
-'randomgif',
 reducer,
 [sagaMiddleware]
 );
