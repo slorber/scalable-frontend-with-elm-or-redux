@@ -11,46 +11,77 @@ import * as randomGifList from '../randomGifList'
 
 export const reducer = combineReducers(
     {
-        // counter: counter.reducer,
         button: theButton.reducer,
         gifList: randomGifList.reducer
     })
 
 export const App = () => (
-    <div>
-        <hr/>
-        
-        <h2>Counter Example: </h2>
-        <div className="container">
-            <counter.Container/>
-        </div>
+  <div>
+    <h1>Scalable Frontend With Redux and Sagas</h1>
+    <p>
+      This project is an attempt to address the problem raised
+      at <a href="https://github.com/slorber/scalable-frontend-with-elm-or-redux">
+        slorber/scalable-frontend-with-elm-or-redux
+      </a> by <a href="https://twitter.com/sebastienlorber">@sebastienlorber</a>.
+    </p>
+    <p>
+      More documentation is needed, but the implementation works. Full "real world"
+      example is found at the very bottom. The first three sections are just showcasing
+      some modules that will be used in the final example.
+    </p>
 
-        <hr/>
+    <p>
+      Note that each in the final example, the <code>theButton</code>, <code>counter</code>,
+      and <code>randomGifList</code> modules are all decoupled from each other. The finally integration
+      is done by the <code>main</code> module by listening to actions dispatched from the three
+      modules through a saga.
+    </p>
 
-        <h2>Counter Example 2: </h2>
-        <div className="container">
-            <counter.Container/>
-        </div>
+    <hr/>
 
-        <h2>Button Example: </h2>
-        <div className="container">
-            <theButton.Container/>
-        </div>
-
-        <hr/>
-        
-        <h2>Random Gif Example: </h2>
-        <div className="container">
-            <randomGif.Container/>
-        </div>
-
-        <hr/>
-        
-        <h2>Random Gif Example: </h2>
-        <div className="container">
-            <randomGif.Container/>
-        </div>
-
-        <hr/>
+    <h2>Counter Example:</h2>
+    <div className="container">
+      <counter.Container/>
     </div>
+
+    <hr/>
+
+    <h2>Button Example:</h2>
+    <div className="container">
+      <theButton.Container/>
+    </div>
+
+    <hr/>
+
+    <h2>Random GIF Example:</h2>
+    <div className="container">
+      {<randomGif.Container 
+      topic="cats"
+      />}
+    </div>
+
+    <hr/>
+
+    <h2>Pair of Random GIF Example:</h2>
+    <div className="container">
+      {<randomGifPair.Container
+          />}
+    </div>
+
+    <hr/>
+
+    <h2>Pair of Pair of Random GIF Example:</h2>
+    <div className="container">
+      {<randomGifPairOfPair.Container
+          />}
+    </div>
+
+    <hr/>
+
+    <h2>List of Random GIF Example:</h2>
+    <div className="container">
+      {<randomGifList.Container
+          />}
+    </div>
+  </div>
 )
