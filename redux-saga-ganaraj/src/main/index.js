@@ -11,8 +11,7 @@ import * as randomGifList from '../randomGifList'
 
 export const reducer = combineReducers(
     {
-        button: theButton.reducer,
-        gifList: randomGifList.reducer
+        button: theButton.reducer
     })
 
 export const App = () => (
