@@ -14,7 +14,7 @@ export const localStateMiddleware = () => {
     };
 };
 
-const localState = (component, localReducer) => {
+const localState = (component, name, localReducer, mws=[]) => {
   
   class LocalProvider extends Component {
     constructor(props, context) {
@@ -22,33 +22,25 @@ const localState = (component, localReducer) => {
         this.parentStore = context.store;
         this.listener = this.listener.bind(this);
         this.localStore = createStore(localReducer, 
-            applyMiddleware(this.listener));
+            applyMiddleware.apply(null, [this.listener, ...mws]));
         callbacks.push(this.globalStoreListener.bind(this));
-        this.overrideGetState();
-        // this.overrideDispatch();
-        
+        this.overrideGetState();        
     }
-    
-    overrideDispatch() {
-        this.originalLocalDispatch = this.localStore.dispatch;
-        
-    }
-    
+
     overrideGetState(){
-        const oldGetState = this.localStore.getState;
+        const localGetState = this.localStore.getState;
         this.localStore.getState = () => ({
                 ...this.parentStore.getState(),
-                local: oldGetState()
+                local: localGetState()
             });
     }
     
     globalStoreListener(action) {
-        if(action.component !== component.displayName) {
-            console.log('local dispatch');
-            action.component = component.displayName;
+        if(action.component !== name) {
+            console.log('from global', action);
+            action.component = name;
             this.localStore.dispatch(action);
         }
-        
     }
     
     getChildContext() {
@@ -58,8 +50,9 @@ const localState = (component, localReducer) => {
     listener() {
         return (next) => (action) => {
             let returnValue = next(action);
-            if(action.component !== component.displayName) {
-                action.component = component.displayName;
+            if(action.component !== name) {
+                action.component = name;
+                console.log('parent dispatch');
                 this.parentStore.dispatch(action);
             }
             return returnValue;
@@ -67,9 +60,9 @@ const localState = (component, localReducer) => {
     };
     
     render() {
-        return createElement(component, this.props);    
+        return createElement(component, this.props);       
     }
-  }
+  }  
   LocalProvider.contextTypes = {store: React.PropTypes.object};
   LocalProvider.childContextTypes = {store: React.PropTypes.object};
   return LocalProvider;

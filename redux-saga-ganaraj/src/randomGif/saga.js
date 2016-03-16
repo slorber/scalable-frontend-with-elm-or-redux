@@ -7,9 +7,9 @@ import fetchRandomGif from './gifEndpoint';
 import { takeEvery } from 'redux-saga';
 
 
-function* requestNewGif({topic, selector}) {
+function* requestNewGif({topic}) {
     const imageUrl = yield call(fetchRandomGif, topic);
-    yield put(newGifSuccess(selector, imageUrl));
+    yield put(newGifSuccess(imageUrl));
 }
 
 function* watchRequestNewGif(){

@@ -13,20 +13,13 @@ export const reducer = combineReducers(
     {
         // counter: counter.reducer,
         button: theButton.reducer,
-        gif: randomGif.reducer,
         gifList: randomGifList.reducer
     })
-
-export function* saga(getState) {
-    yield [
-        fork(randomGif.saga)
-    ];
-}
 
 export const App = () => (
     <div>
         <hr/>
-
+        
         <h2>Counter Example: </h2>
         <div className="container">
             <counter.Container/>
@@ -42,6 +35,20 @@ export const App = () => (
         <h2>Button Example: </h2>
         <div className="container">
             <theButton.Container/>
+        </div>
+
+        <hr/>
+        
+        <h2>Random Gif Example: </h2>
+        <div className="container">
+            <randomGif.Container/>
+        </div>
+
+        <hr/>
+        
+        <h2>Random Gif Example: </h2>
+        <div className="container">
+            <randomGif.Container/>
         </div>
 
         <hr/>

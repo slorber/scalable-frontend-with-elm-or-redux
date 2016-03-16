@@ -36,5 +36,6 @@ export default localState(connect(
   mapStateToProps,
   mapDispatchToProps
 )(Counter),
+'counter',
 reducer
 );

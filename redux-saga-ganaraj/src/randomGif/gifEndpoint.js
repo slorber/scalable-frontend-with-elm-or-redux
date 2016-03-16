@@ -13,7 +13,6 @@ const fetchRandomGif = topic => {
                     // do something
                     resolve(FAILED_GIF_DATA_URI);
                 } else {
-                    console.log(res.body);
                     resolve(res.body.data.image_url);
                 }
             });

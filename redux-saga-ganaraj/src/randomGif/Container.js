@@ -2,7 +2,12 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as actions from './actions'
-import localState from '../localState';
+import localState from '../LocalProvider';
+import reducer from './reducer';
+import saga from './saga';
+import createSagaMiddleware from 'redux-saga';
+
+const sagaMiddleware = createSagaMiddleware(saga)
 
 export class Component extends React.Component {
 
@@ -48,8 +53,8 @@ export class Component extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    isPending: state.gif[ownProps.selector].isPending,
-    imageUrl: state.gif[ownProps.selector].imageUrl
+    isPending: state.local.isPending,
+    imageUrl: state.local.imageUrl
   }
 }
 
@@ -62,4 +67,8 @@ function mapDispatchToProps(dispatch, ownProps) {
 export default localState(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Component));
+)(Component),
+'randomgif',
+reducer,
+[sagaMiddleware]
+);

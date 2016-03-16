@@ -11,9 +11,8 @@ import {localStateMiddleware} from './LocalProvider';
 
 const logger = createLogger();
 
-const sagaMiddleware = createSagaMiddleware(saga)
 const store = createStore(reducer, 
-    applyMiddleware(localStateMiddleware, sagaMiddleware, logger)
+    applyMiddleware(localStateMiddleware, logger)
     );
 
 render(
