@@ -7,7 +7,6 @@ const getCounter = state => state.counter;
 const getButtonIsActive = state => state.button.isActive;
 
 function* onRequestNewGif() {
-    console.log('requested');
     const counter = yield select(getCounter);
     const isActive = yield select(getButtonIsActive);
 
@@ -22,6 +21,5 @@ function* watchRequestNewGif(){
 }
 
 export default function* () {
-    console.log('watching');
   yield [ fork(watchRequestNewGif) ];
 }
