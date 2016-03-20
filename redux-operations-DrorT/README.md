@@ -20,7 +20,7 @@
 - the pair of random gifs and the two pairs are simply created by using the RandomGif component and pointing at different locations in the state
 - the update button for each RandomGif component dispatches the UPDATE_GIF action, which calls an async fetch and on data received calls NEW_GIF
 - on NEW_GIF the randomGif reducer is called to update the image source
-- ** async ** - is written as part of the reducer and invoked as part and not in middleware, so that all application logic is in the reducers
+- **async** - is written as part of the reducer and invoked as part and not in middleware, so that all application logic is in the reducers
 
 # 1. action chaining
 In this solution we use redux-operations ability to call different functions from different reducers to the same action in a specific order passing one function result to the next
