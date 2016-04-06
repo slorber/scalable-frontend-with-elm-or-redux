@@ -1,6 +1,6 @@
 import run from './boilerplate';
 
-import view from './gif-viewer/view';
-import updater from './gif-viewer/updater';
+import view from './root/view';
+import updater from './root/updater';
 
 run('app', view, updater);
