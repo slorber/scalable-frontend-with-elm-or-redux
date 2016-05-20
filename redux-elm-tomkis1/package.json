@@ -21,17 +21,12 @@
   },
   "dependencies": {
     "babel-runtime": "^6.5.0",
-    "bluebird": "^3.3.4",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.2",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
     "react-redux": "^4.0.0",
-    "react-router": "^2.0.0",
-    "react-router-redux": "^4.0.0",
     "redux": "^3.3.1",
-    "redux-elm": "^1.0.0-alpha",
-    "redux-side-effects": "^1.0.0",
-    "superagent": "^1.8.3",
-    "superagent-bluebird-promise": "^3.0.0"
+    "redux-elm": "^2.1.1",
+    "redux-saga": "^0.10.4"
   },
   "author": "Tomas Weiss <tomasw@salsitasoft.com>",
   "license": "MIT"

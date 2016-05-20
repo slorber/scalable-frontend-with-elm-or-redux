@@ -1,9 +1,9 @@
-import { Updater, Matchers } from 'redux-elm';
+import { Updater } from 'redux-elm';
 
 export const isActive = model => model;
 
-export default new Updater(false, Matchers.exactMatcher)
-  .case('Toggle', function*(model) {
-    return !model;
-  })
+export const initialModel = false;
+
+export default new Updater(initialModel)
+  .case('Toggle', model => !model)
   .toReducer();

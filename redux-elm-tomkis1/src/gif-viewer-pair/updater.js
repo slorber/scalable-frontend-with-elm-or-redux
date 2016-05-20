@@ -1,28 +1,17 @@
-import { Updater, mapEffects, Matchers } from 'redux-elm';
+import { Updater } from 'redux-elm';
+import { takeEvery } from 'redux-saga';
+import { put } from 'redux-saga/effects';
 
-import gifViewerUpdater, { init as gifViewerInit, fetchGif } from '../gif-viewer/updater';
+import gifViewerUpdater, { init as gifViewerInit } from '../gif-viewer/updater';
 
-const funnyCatsGifViewerInit = gifViewerInit('funny cats');
-const funnyDogsGifViewerInit = gifViewerInit('funny dogs');
+export const initialModel = {
+  top: gifViewerInit('funny cats'),
+  bottom: gifViewerInit('funny dogs')
+};
 
-export function* init() {
-  return {
-    top: yield* mapEffects(funnyCatsGifViewerInit(), 'Top'),
-    bottom: yield* mapEffects(funnyDogsGifViewerInit(), 'Bottom')
-  };
-}
-
-export default new Updater(init)
-  .case('Top', function*(model, action) {
-    return {
-      ...model,
-      top: yield* mapEffects(gifViewerUpdater(model.top, action), 'Top')
-    };
-  })
-  .case('Bottom', function*(model, action) {
-    return {
-      ...model,
-      bottom: yield* mapEffects(gifViewerUpdater(model.bottom, action), 'Bottom')
-    };
-  })
+export default new Updater(initialModel)
+  .case('Top', (model, action) =>
+    ({ ...model, top: gifViewerUpdater(model.top, action) }))
+  .case('Bottom', (model, action) =>
+    ({ ...model, bottom: gifViewerUpdater(model.bottom, action) }))
   .toReducer();

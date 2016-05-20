@@ -1,10 +1,8 @@
-import { Updater, Matchers } from 'redux-elm';
+import { Updater } from 'redux-elm';
 
-export function increment(model) {
-  return model + 1;
-}
+export const increment = model => model + 1;
 
-export function incrementByTwo(model) {
+export const incrementByTwo = model => {
   if (model >= 10) {
     return model + 2;
   } else {
@@ -12,5 +10,7 @@ export function incrementByTwo(model) {
   }
 }
 
-export default new Updater(0)
+export const initialModel = 0;
+
+export default new Updater(initialModel)
   .toReducer();

@@ -1,5 +1,6 @@
 import React from 'react';
+import { view } from 'redux-elm';
 
-export default ({ model }) =>
-  <div>Value: {model}</div>;
+export default view(({ model }) =>
+  <div>Value: {model}</div>);
 
