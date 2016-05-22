@@ -1,25 +1,17 @@
-import { Updater, mapEffects, Matchers } from 'redux-elm';
+import { Updater } from 'redux-elm';
+import { takeEvery } from 'redux-saga';
+import { put } from 'redux-saga/effects';
 
-import gifViewerPairUpdater, { init as gifViewerPairInit } from '../gif-viewer-pair/updater';
+import gifViewerUpdater, { initialModel as gifViewerInitialModel } from '../gif-viewer-pair/updater';
 
-export function* init() {
-  return {
-    leftPair: yield* mapEffects(gifViewerPairInit(), 'LeftPair'),
-    rightPair: yield* mapEffects(gifViewerPairInit(), 'RightPair')
-  };
-}
+export const initialModel = {
+  leftPair: gifViewerInitialModel,
+  rightPair: gifViewerInitialModel
+};
 
-export default new Updater(init)
-  .case('LeftPair', function*(model, action) {
-    return {
-      ...model,
-      leftPair: yield* mapEffects(gifViewerPairUpdater(model.leftPair, action), 'LeftPair')
-    };
-  })
-  .case('RightPair', function*(model, action) {
-    return {
-      ...model,
-      rightPair: yield* mapEffects(gifViewerPairUpdater(model.rightPair, action), 'RightPair')
-    };
-  })
+export default new Updater(initialModel)
+  .case('LeftPair', (model, action) =>
+    ({ ...model, leftPair: gifViewerUpdater(model.leftPair, action) }))
+  .case('RightPair', (model, action) =>
+    ({ ...model, rightPair: gifViewerUpdater(model.rightPair, action) }))
   .toReducer();

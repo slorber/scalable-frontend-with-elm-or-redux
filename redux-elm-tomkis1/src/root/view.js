@@ -1,5 +1,5 @@
 import React from 'react';
-import { forwardTo } from 'redux-elm';
+import { view, forwardTo } from 'redux-elm';
 
 import GifViewer from '../gif-viewer/view';
 import GifViewerPair from '../gif-viewer-pair/view';
@@ -7,7 +7,7 @@ import GifViewerPairPair from '../gif-viewer-pair-of-pairs/view';
 import Button from '../button/view';
 import Counter from '../counter/view';
 
-export default ({ model, dispatch }) => (
+export default view(({ model, dispatch }) => (
   <div>
     <div style={{ float: 'left' }}>
       <h2>GifViewer</h2>
@@ -22,4 +22,4 @@ export default ({ model, dispatch }) => (
       <Counter model={model.counter} dispatch={forwardTo(dispatch, 'Counter')} />
     </div>
   </div>
-);
+));

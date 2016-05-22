@@ -1,9 +1,9 @@
 import React from 'react';
-import { forwardTo } from 'redux-elm';
+import { view, forwardTo } from 'redux-elm';
 
 import GifViewerPair from '../gif-viewer-pair/view';
 
-export default ({ model, dispatch }) => (
+export default view(({ model, dispatch }) => (
   <div>
     <div style={{ float: 'left' }}>
       <GifViewerPair model={model.leftPair} dispatch={forwardTo(dispatch, 'LeftPair')} />
@@ -13,4 +13,4 @@ export default ({ model, dispatch }) => (
     </div>
     <div style={{ clear: 'both' }}></div>
   </div>
-);
+));
