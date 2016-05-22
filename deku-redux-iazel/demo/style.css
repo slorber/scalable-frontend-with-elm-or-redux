@@ -1,0 +1,89 @@
+.gif-wrapper {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+}
+
+.rg-gif {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+}
+
+.rg-topic {
+  margin-top: 0;
+}
+
+.the-button {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 0.5em 0.7em;
+}
+.the-button.active {
+  background-color: green;
+}
+.the-button.inactive {
+  background-color: red;
+}
+
+.container {
+  margin-bottom: 5em;
+}
+.sec-title {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5em;
+}
+
+.pair-item {
+  display: inline-block;
+  margin-left: 5em;
+}
+
+.pair-item:first-child {
+  margin-left: 0;
+}
+
+.pair-item:first-child > .pair > .pair-item:last-child {
+  border-right: 1px solid #ccc;
+  padding-right: 5em;
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+}
+.form-control {
+  border: 1px solid #ccc;
+  padding: 0.3em 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.list {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.list-new {
+  margin-left: 1em;
+  display: inline-block;
+  margin-top: 1em;
+}
+
+.list-item {
+  display: inline-block;
+  margin-right: 3em;
+  margin-bottom: 3em;
+  position: relative;
+}
+
+.list-item .remove {
+  position: absolute;
+  right: 0;
+  font-size: 1.4em;
+  text-decoration: none;
+  color: #a00;
+  font-weight: bold;
+}

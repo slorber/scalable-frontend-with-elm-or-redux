@@ -1,0 +1,1 @@
+export const ITEM_ACTION = 'PAIR_ITEM_ACTION'
