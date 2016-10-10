@@ -2,8 +2,8 @@
 import React, { PureComponent } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import * as RandomGifController from './random-gif/controller';
-import RandomGif from './random-gif/view';
+import * as RandomGifPairController from './random-gif-pair/controller';
+import RandomGifPair from './random-gif-pair/view';
 import * as Controller from './controller';
 import * as Model from './model';
 
@@ -13,11 +13,16 @@ type Props = {
 };
 
 export default class App extends PureComponent<void, Props, void> {
-  handleDispatchRandomGif: (action: RandomGifController.Action) => void = (action) => {
+  handleDispatchRandomGifPair = (action: RandomGifPairController.Action): void => {
     this.props.dispatch({
-      type: 'RandomGif',
+      type: 'RandomGifPair',
       action,
     });
+  };
+
+  tags = {
+    first: 'cat',
+    second: 'dog',
   };
 
   render() {
@@ -27,10 +32,10 @@ export default class App extends PureComponent<void, Props, void> {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Scalable frontend, with Elm or Redux</h2>
         </div>
-        <RandomGif
-          dispatch={this.handleDispatchRandomGif}
-          state={this.props.state.randomGif}
-          tag="cat"
+        <RandomGifPair
+          dispatch={this.handleDispatchRandomGifPair}
+          state={this.props.state.randomGifPair}
+          tags={this.tags}
         />
       </div>
     );
