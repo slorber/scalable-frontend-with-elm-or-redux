@@ -1,21 +1,38 @@
-import React, { Component } from 'react';
+// @flow
+import React, { PureComponent } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import * as RandomGifController from './random-gif/controller';
+import RandomGif from './random-gif/view';
+import * as Controller from './controller';
+import * as Model from './model';
 
-class App extends Component {
+type Props = {
+  dispatch: (action: Controller.Action) => void,
+  state: Model.State,
+};
+
+export default class App extends PureComponent<void, Props, void> {
+  handleDispatchRandomGif: (action: RandomGifController.Action) => void = (action) => {
+    this.props.dispatch({
+      type: 'RandomGif',
+      action,
+    });
+  };
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Scalable frontend, with Elm or Redux</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <RandomGif
+          dispatch={this.handleDispatchRandomGif}
+          state={this.props.state.randomGif}
+          tag="cat"
+        />
       </div>
     );
   }
 }
-
-export default App;
