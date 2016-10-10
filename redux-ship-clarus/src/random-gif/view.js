@@ -38,6 +38,7 @@ export default class RandomGif extends PureComponent<void, Props, void> {
   render() {
     return (
       <div>
+        <h2>{this.props.tag}</h2>
         {this.renderGif()}
         <button
           disabled={this.props.state.isLoading}
