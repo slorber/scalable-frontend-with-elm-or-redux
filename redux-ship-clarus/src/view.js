@@ -2,6 +2,7 @@
 import React, { PureComponent } from 'react';
 import logo from './logo.svg';
 import './view.css';
+import Counter from './counter/view';
 import * as RandomGifController from './random-gif/controller';
 import RandomGif from './random-gif/view';
 import * as RandomGifPairController from './random-gif-pair/controller';
@@ -35,6 +36,8 @@ export default class Index extends PureComponent<void, Props, void> {
           <img src={logo} className="Index-logo" alt="logo" />
           <h2>Scalable frontend, with Elm or Redux</h2>
         </div>
+        <h1>Counter</h1>
+        <Counter state={this.props.state.counter} />
         <h1>Simple</h1>
         <RandomGif
           dispatch={this.handleDispatchRandomGif}

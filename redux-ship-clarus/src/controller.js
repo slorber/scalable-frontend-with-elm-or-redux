@@ -19,15 +19,21 @@ export function* control(
   switch (action.type) {
   case 'RandomGif': {
     return yield* Ship.map(
-      action => ({type: 'RandomGif', action}),
-      state => state.randomGif,
+      action => action,
+      state => ({
+        counter: state.counter,
+        randomGif: state.randomGif,
+      }),
       RandomGifController.control(action.action)
     );
   }
   case 'RandomGifPair': {
     return yield* Ship.map(
-      action => ({type: 'RandomGifPair', action}),
-      state => state.randomGifPair,
+      action => action,
+      state => ({
+        counter: state.counter,
+        randomGifPair: state.randomGifPair,
+      }),
       RandomGifPairController.control(action.action)
     );
   }
