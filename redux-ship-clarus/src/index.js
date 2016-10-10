@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Ship from 'redux-ship';
 import shipLogger from 'redux-ship-logger';
-import App from './App';
+import Index from './view';
 import './index.css';
 import store from './store';
 import * as Controller from './controller';
@@ -20,7 +20,7 @@ function dispatch(action: Controller.Action): void {
 
 function render() {
   ReactDOM.render(
-    <App
+    <Index
       dispatch={dispatch}
       state={store.getState()}
     />,

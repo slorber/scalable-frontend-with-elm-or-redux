@@ -1,7 +1,7 @@
 // @flow
 import React, { PureComponent } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './view.css';
 import * as RandomGifController from './random-gif/controller';
 import RandomGif from './random-gif/view';
 import * as RandomGifPairController from './random-gif-pair/controller';
@@ -14,7 +14,7 @@ type Props = {
   state: Model.State,
 };
 
-export default class App extends PureComponent<void, Props, void> {
+export default class Index extends PureComponent<void, Props, void> {
   handleDispatchRandomGif = (action: RandomGifController.Action): void => {
     this.props.dispatch({type: 'RandomGif', action});
   };
@@ -30,9 +30,9 @@ export default class App extends PureComponent<void, Props, void> {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+      <div className="Index">
+        <div className="Index-header">
+          <img src={logo} className="Index-logo" alt="logo" />
           <h2>Scalable frontend, with Elm or Redux</h2>
         </div>
         <h1>Simple</h1>
