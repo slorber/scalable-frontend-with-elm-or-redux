@@ -15,5 +15,17 @@ export function snapshotComponent<Config>(
       const tree = renderer.create(element).toJSON();
       expect(tree).toMatchSnapshot();
     });
-  })
+  });
+}
+
+export function snapshotReduce<Patch, State>(
+  reduce: (state: State, patch: Patch) => State,
+  configs: {[id: string]: {patch: Patch, state: State}}
+): void {
+  Object.keys(configs).forEach(id => {
+    it(id, () => {
+      const {patch, state} = configs[id];
+      expect(reduce(state, patch)).toMatchSnapshot();
+    });
+  });
 }
