@@ -9,6 +9,8 @@ import * as RandomGifController from './random-gif/controller';
 import RandomGif from './random-gif/view';
 import * as RandomGifPairController from './random-gif-pair/controller';
 import RandomGifPair from './random-gif-pair/view';
+import * as RandomGifPairPairController from './random-gif-pair-pair/controller';
+import RandomGifPairPair from './random-gif-pair-pair/view';
 import * as Controller from './controller';
 import * as Model from './model';
 
@@ -30,9 +32,24 @@ export default class Index extends PureComponent<void, Props, void> {
     this.props.dispatch({type: 'RandomGifPair', action});
   };
 
+  handleDispatchRandomGifPairPair = (action: RandomGifPairPairController.Action): void => {
+    this.props.dispatch({type: 'RandomGifPairPair', action});
+  };
+
   tags = {
     first: 'cats',
     second: 'lemurs',
+  };
+
+  tagsPair = {
+    first: {
+      first: 'unicorns',
+      second: 'minions',
+    },
+    second: {
+      first: 'pokemon',
+      second: 'lizards',
+    },
   };
 
   render() {
@@ -62,6 +79,12 @@ export default class Index extends PureComponent<void, Props, void> {
           dispatch={this.handleDispatchRandomGifPair}
           state={this.props.state.randomGifPair}
           tags={this.tags}
+        />
+        <h1>PairPair</h1>
+        <RandomGifPairPair
+          dispatch={this.handleDispatchRandomGifPairPair}
+          state={this.props.state.randomGifPairPair}
+          tagsPair={this.tagsPair}
         />
       </div>
     );

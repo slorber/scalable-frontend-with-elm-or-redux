@@ -3,6 +3,7 @@ import * as Ship from 'redux-ship';
 import * as ButtonModel from './button/model';
 import * as RandomGifController from './random-gif/controller';
 import * as RandomGifPairController from './random-gif-pair/controller';
+import * as RandomGifPairPairController from './random-gif-pair-pair/controller';
 import * as Model from './model';
 
 export type Action = {
@@ -14,6 +15,9 @@ export type Action = {
 } | {
   type: 'RandomGifPair',
   action: RandomGifPairController.Action,
+} | {
+  type: 'RandomGifPairPair',
+  action: RandomGifPairPairController.Action,
 };
 
 export type Commit = {
@@ -25,6 +29,9 @@ export type Commit = {
 } | {
   type: 'RandomGifPair',
   commit: RandomGifPairController.Commit,
+} | {
+  type: 'RandomGifPairPair',
+  commit: RandomGifPairPairController.Commit,
 };
 
 export type State = Model.State;
@@ -65,6 +72,20 @@ export function applyCommit(state: State, commit: Commit): Patch {
       ...patch.randomGifPair && {randomGifPair: patch.randomGifPair},
     };
   }
+  case 'RandomGifPairPair': {
+    const patch = RandomGifPairPairController.applyCommit(
+      {
+        button: state.button,
+        counter: state.counter,
+        randomGifPairPair: state.randomGifPairPair
+      },
+      commit.commit
+    );
+    return {
+      ...patch.counter && {counter: patch.counter},
+      ...patch.randomGifPairPair && {randomGifPairPair: patch.randomGifPairPair},
+    };
+  }
   default:
     return {};
   }
@@ -97,6 +118,16 @@ export function* control(action: Action): Ship.Ship<*, Commit, State, void> {
         randomGifPair: state.randomGifPair,
       }),
       RandomGifPairController.control(action.action)
+    );
+  case 'RandomGifPairPair':
+    return yield* Ship.map(
+      commit => ({type: 'RandomGifPairPair', commit}),
+      state => ({
+        button: state.button,
+        counter: state.counter,
+        randomGifPairPair: state.randomGifPairPair,
+      }),
+      RandomGifPairPairController.control(action.action)
     );
   default:
     return;

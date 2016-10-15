@@ -5,13 +5,15 @@ import RandomGif from '../random-gif/view';
 import * as Controller from './controller';
 import * as Model from './model';
 
+export type Tags = {
+  first: string,
+  second: string,
+};
+
 type Props = {
   dispatch: (action: Controller.Action) => void,
   state: Model.State,
-  tags: {
-    first: string,
-    second: string,
-  },
+  tags: Tags,
 };
 
 export default class RandomGifPair extends PureComponent<void, Props, void> {
