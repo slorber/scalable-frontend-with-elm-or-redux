@@ -54,7 +54,7 @@ export function applyCommit(state: State, commit: Commit): Patch {
   }
   default:
     return {};
-  };
+  }
 }
 
 export function* control(action: Action): Ship.Ship<*, Commit, State, void> {
