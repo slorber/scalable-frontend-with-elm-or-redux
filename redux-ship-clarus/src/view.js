@@ -69,11 +69,13 @@ export default class Index extends PureComponent<void, Props, void> {
           state={this.props.state.counter}
         />
         <h1>Simple</h1>
-        <RandomGif
-          dispatch={this.handleDispatchRandomGif}
-          state={this.props.state.randomGif}
-          tag="dogs"
-        />
+        <div className="Index-randomGif">
+          <RandomGif
+            dispatch={this.handleDispatchRandomGif}
+            state={this.props.state.randomGif}
+            tag="dogs"
+          />
+        </div>
         <h1>Pair</h1>
         <RandomGifPair
           dispatch={this.handleDispatchRandomGifPair}

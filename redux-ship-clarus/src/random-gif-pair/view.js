@@ -1,5 +1,6 @@
 // @flow
 import React, { PureComponent } from 'react';
+import './view.css';
 import * as RandomGifController from '../random-gif/controller';
 import RandomGif from '../random-gif/view';
 import * as Controller from './controller';
@@ -27,7 +28,7 @@ export default class RandomGifPair extends PureComponent<void, Props, void> {
 
   render() {
     return (
-      <div>
+      <div className="RandomGifPair">
         <RandomGif
           dispatch={this.handleDispatchFirst}
           state={this.props.state.first}

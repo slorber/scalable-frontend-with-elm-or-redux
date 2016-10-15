@@ -7,6 +7,11 @@
   height: 80px;
 }
 
+@keyframes Index-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .Index-header {
   background-color: #222;
   height: 150px;
@@ -14,7 +19,7 @@
   color: white;
 }
 
-@keyframes Index-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.Index-randomGif {
+  display: flex;
+  justify-content: center;
 }

@@ -1,5 +1,7 @@
 // @flow
 import React, { PureComponent } from 'react';
+import './view.css';
+import logo from '../logo.svg';
 import * as Controller from './controller';
 import * as Model from './model';
 
@@ -18,26 +20,21 @@ export default class RandomGif extends PureComponent<void, Props, void> {
   };
 
   renderGif() {
-    if (this.props.state.isLoading) {
-      return <p>...</p>;
-    }
-    if (this.props.state.gifUrl) {
-      return (
-        <img
-          alt="animated gif"
-          src={this.props.state.gifUrl}
-          style={{
-            maxWidth: 400,
-          }}
-        />
-      );
-    }
-    return null;
+    const src = this.props.state.gifUrl && !this.props.state.isLoading ?
+      this.props.state.gifUrl :
+      logo;
+    return (
+      <img
+        alt="waiting logo"
+        className="RandomGif-picture"
+        src={src}
+      />
+    );
   }
 
   render() {
     return (
-      <div>
+      <div className="RandomGif">
         <h2>{this.props.tag}</h2>
         {this.renderGif()}
         <button
