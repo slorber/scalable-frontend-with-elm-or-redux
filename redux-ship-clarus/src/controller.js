@@ -39,7 +39,11 @@ export function applyCommit(state: State, commit: Commit): Patch {
     };
   case 'RandomGif': {
     const patch = RandomGifController.applyCommit(
-      {counter: state.counter, randomGif: state.randomGif},
+      {
+        button: state.button,
+        counter: state.counter,
+        randomGif: state.randomGif
+      },
       commit.commit
     );
     return {
@@ -49,7 +53,11 @@ export function applyCommit(state: State, commit: Commit): Patch {
   }
   case 'RandomGifPair': {
     const patch = RandomGifPairController.applyCommit(
-      {counter: state.counter, randomGifPair: state.randomGifPair},
+      {
+        button: state.button,
+        counter: state.counter,
+        randomGifPair: state.randomGifPair
+      },
       commit.commit
     );
     return {
@@ -74,6 +82,7 @@ export function* control(action: Action): Ship.Ship<*, Commit, State, void> {
     return yield* Ship.map(
       commit => ({type: 'RandomGif', commit}),
       state => ({
+        button: state.button,
         counter: state.counter,
         randomGif: state.randomGif,
       }),
@@ -83,6 +92,7 @@ export function* control(action: Action): Ship.Ship<*, Commit, State, void> {
     return yield* Ship.map(
       commit => ({type: 'RandomGifPair', commit}),
       state => ({
+        button: state.button,
         counter: state.counter,
         randomGifPair: state.randomGifPair,
       }),

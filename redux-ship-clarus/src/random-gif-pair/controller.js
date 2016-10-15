@@ -1,7 +1,8 @@
 // @flow
 import * as Ship from 'redux-ship';
-import * as RandomGifController from '../random-gif/controller';
+import * as ButtonModel from '../button/model';
 import * as CounterModel from '../counter/model';
+import * as RandomGifController from '../random-gif/controller';
 import * as RandomGifPairModel from './model';
 
 export type Action = {
@@ -21,6 +22,7 @@ export type Commit = {
 };
 
 export type State = {
+  button: ButtonModel.State,
   counter: CounterModel.State,
   randomGifPair: RandomGifPairModel.State,
 };
@@ -34,7 +36,11 @@ export function applyCommit(state: State, commit: Commit): Patch {
   switch (commit.type) {
   case 'First': {
     const patch = RandomGifController.applyCommit(
-      {counter: state.counter, randomGif: state.randomGifPair.first},
+      {
+        button: state.button,
+        counter: state.counter,
+        randomGif: state.randomGifPair.first
+      },
       commit.commit
     );
     return {
@@ -44,7 +50,11 @@ export function applyCommit(state: State, commit: Commit): Patch {
   }
   case 'Second': {
     const patch = RandomGifController.applyCommit(
-      {counter: state.counter, randomGif: state.randomGifPair.second},
+      {
+        button: state.button,
+        counter: state.counter,
+        randomGif: state.randomGifPair.second
+      },
       commit.commit
     );
     return {
@@ -63,6 +73,7 @@ export function* control(action: Action): Ship.Ship<*, Commit, State, void> {
     return yield* Ship.map(
       commit => ({type: 'First', commit}),
       state => ({
+        button: state.button,
         counter: state.counter,
         randomGif: state.randomGifPair.first,
       }),
@@ -72,6 +83,7 @@ export function* control(action: Action): Ship.Ship<*, Commit, State, void> {
     return yield* Ship.map(
       commit => ({type: 'Second', commit}),
       state => ({
+        button: state.button,
         counter: state.counter,
         randomGif: state.randomGifPair.second,
       }),

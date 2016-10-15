@@ -1,6 +1,7 @@
 // @flow
 import * as Ship from 'redux-ship';
 import * as Effect from '../effect';
+import * as ButtonModel from '../button/model';
 import * as CounterModel from '../counter/model';
 import * as RandomGifModel from './model';
 
@@ -17,6 +18,7 @@ export type Commit = {
 };
 
 export type State = {
+  button: ButtonModel.State,
   counter: CounterModel.State,
   randomGif: RandomGifModel.State,
 };
@@ -32,7 +34,7 @@ export function applyCommit(state: State, commit: Commit): Patch {
     return {randomGif: commit};
   case 'LoadSuccess':
     return {
-      counter: state.counter.count >= 10 ?
+      counter: state.counter.count >= 10 && state.button.status === 'green' ?
         {type: 'IncrementByTwo'} :
         {type: 'IncrementByOne'},
       randomGif: commit,
