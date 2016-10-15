@@ -8,14 +8,14 @@ export const initialState: State = {
   count: 0,
 };
 
-export type Action = {
+export type Patch = {
   type: 'IncrementByOne',
 } | {
   type: 'IncrementByTwo',
 };
 
-export function reduce(state: State, action: Action): State {
-  switch (action.type) {
+export function reduce(state: State, patch: Patch): State {
+  switch (patch.type) {
   case 'IncrementByOne':
     return {
       ...state,

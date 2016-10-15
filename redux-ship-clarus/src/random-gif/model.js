@@ -10,15 +10,15 @@ export const initialState: State = {
   isLoading: false,
 };
 
-export type Action = {
+export type Patch = {
   type: 'LoadStart',
 } | {
   type: 'LoadSuccess',
   gifUrl: string,
 };
 
-export function reduce(state: State, action: Action): State {
-  switch (action.type) {
+export function reduce(state: State, patch: Patch): State {
+  switch (patch.type) {
   case 'LoadStart':
     return {
       ...state,
@@ -28,7 +28,7 @@ export function reduce(state: State, action: Action): State {
     return {
       ...state,
       isLoading: false,
-      gifUrl: action.gifUrl,
+      gifUrl: patch.gifUrl,
     };
   default:
     return state;

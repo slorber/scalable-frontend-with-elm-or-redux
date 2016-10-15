@@ -1,9 +1,9 @@
 // @flow
 import React, { PureComponent } from 'react';
-import * as Model from './model';
+import * as CounterModel from './model';
 
 type Props = {
-  state: Model.State,
+  state: CounterModel.State,
 };
 
 export default class Counter extends PureComponent<void, Props, void> {

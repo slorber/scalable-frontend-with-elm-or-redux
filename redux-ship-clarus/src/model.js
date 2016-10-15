@@ -15,35 +15,20 @@ export const initialState: State = {
   randomGifPair: RandomGifPairModel.initialState,
 };
 
-export type Action = {
-  type: 'Counter',
-  action: CounterModel.Action,
-} | {
-  type: 'RandomGif',
-  action: RandomGifModel.Action,
-} | {
-  type: 'RandomGifPair',
-  action: RandomGifPairModel.Action,
+export type Patch = {
+  counter?: CounterModel.Patch,
+  randomGif?: RandomGifModel.Patch,
+  randomGifPair?: RandomGifPairModel.Patch,
 };
 
-export function reduce(state: State, action: Action): State {
-  switch (action.type) {
-  case 'Counter':
-    return {
-      ...state,
-      counter: CounterModel.reduce(state.counter, action.action),
-    };
-  case 'RandomGif':
-    return {
-      ...state,
-      randomGif: RandomGifModel.reduce(state.randomGif, action.action),
-    };
-  case 'RandomGifPair':
-    return {
-      ...state,
-      randomGifPair: RandomGifPairModel.reduce(state.randomGifPair, action.action),
-    };
-  default:
-    return state;
-  }
+export function reduce(state: State, patch: Patch): State {
+  return {
+    ...state,
+    ...patch.counter &&
+      {counter: CounterModel.reduce(state.counter, patch.counter)},
+    ...patch.randomGif &&
+      {randomGif: RandomGifModel.reduce(state.randomGif, patch.randomGif)},
+    ...patch.randomGifPair &&
+      {randomGifPair: RandomGifPairModel.reduce(state.randomGifPair, patch.randomGifPair)},
+  };
 }

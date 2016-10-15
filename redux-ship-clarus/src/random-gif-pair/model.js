@@ -11,27 +11,15 @@ export const initialState: State = {
   second: RandomGifModel.initialState,
 };
 
-export type Action = {
-  type: 'First',
-  action: RandomGifModel.Action,
-} | {
-  type: 'Second',
-  action: RandomGifModel.Action,
+export type Patch = {
+  first?: RandomGifModel.Patch,
+  second?: RandomGifModel.Patch,
 };
 
-export function reduce(state: State, action: Action): State {
-  switch (action.type) {
-  case 'First':
-    return {
-      ...state,
-      first: RandomGifModel.reduce(state.first, action.action),
-    };
-  case 'Second':
-    return {
-      ...state,
-      second: RandomGifModel.reduce(state.second, action.action),
-    };
-  default:
-    return state;
-  }
+export function reduce(state: State, patch: Patch): State {
+  return {
+    ...state,
+    ...patch.first && {first: RandomGifModel.reduce(state.first, patch.first)},
+    ...patch.second && {second: RandomGifModel.reduce(state.second, patch.second)},
+  };
 }

@@ -1,10 +1,15 @@
 // @flow
 import {applyMiddleware, createStore} from 'redux';
-import createLogger from 'redux-logger';
+import {logCommit} from 'redux-ship-logger';
+import * as Controller from './controller';
 import * as Model from './model';
 
 const middlewares = [
-  createLogger(),
+  logCommit(Controller.applyCommit),
 ];
 
-export default createStore(Model.reduce, Model.initialState, applyMiddleware(...middlewares));
+function reduce(state, commit) {
+  return Model.reduce(state, Controller.applyCommit(state, commit));
+}
+
+export default createStore(reduce, Model.initialState, applyMiddleware(...middlewares));
