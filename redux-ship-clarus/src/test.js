@@ -5,6 +5,18 @@ import renderer from 'react-test-renderer';
 export function dispatch() {
 }
 
+export function snapshotApplyCommit<Commit, Patch, State>(
+  applyCommit: (state: State, commit: Commit) => Patch,
+  configs: {[id: string]: {commit: Commit, state: State}}
+): void {
+  Object.keys(configs).forEach(id => {
+    it(id, () => {
+      const {commit, state} = configs[id];
+      expect(applyCommit(state, commit)).toMatchSnapshot();
+    });
+  });
+}
+
 export function snapshotComponent<Config>(
   component: ReactClass<Config>,
   configs: {[id: string]: Config}

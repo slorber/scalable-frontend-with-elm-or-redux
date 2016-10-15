@@ -1,0 +1,31 @@
+exports[`test LoadStart 1`] = `
+Object {
+  "randomGif": Object {
+    "type": "LoadStart"
+  }
+}
+`;
+
+exports[`test LoadSuccessIncrementByOne 1`] = `
+Object {
+  "counter": Object {
+    "type": "IncrementByOne"
+  },
+  "randomGif": Object {
+    "gifUrl": "https://media2.giphy.com/media/m7ychnf9zOVm8/giphy.gif",
+    "type": "LoadSuccess"
+  }
+}
+`;
+
+exports[`test LoadSuccessIncrementByTwo 1`] = `
+Object {
+  "counter": Object {
+    "type": "IncrementByTwo"
+  },
+  "randomGif": Object {
+    "gifUrl": "https://media2.giphy.com/media/m7ychnf9zOVm8/giphy.gif",
+    "type": "LoadSuccess"
+  }
+}
+`;
