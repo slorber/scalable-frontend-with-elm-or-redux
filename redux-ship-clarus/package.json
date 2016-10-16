@@ -13,7 +13,7 @@
     "react-test-renderer": "^15.3.2",
     "redux": "^3.6.0",
     "redux-ship": "0.0.12",
-    "redux-ship-logger": "0.0.7"
+    "redux-ship-logger": "0.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
