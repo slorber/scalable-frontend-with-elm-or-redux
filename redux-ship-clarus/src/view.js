@@ -59,6 +59,11 @@ export default class Index extends PureComponent<void, Props, void> {
           <img src={logo} className="Index-logo" alt="logo" />
           <h2>Scalable frontend, with Elm or Redux</h2>
         </div>
+        <p className="Index-intro">
+          This is a solution to the problem <a href="https://github.com/slorber/scalable-frontend-with-elm-or-redux">Scalable frontend, with Elm or Redux</a> of <a href="https://github.com/slorber">Sébastien Lorber</a>.
+          <br />
+          It uses <a href="https://github.com/clarus/redux-ship">Redux Ship</a>. Open your Javascript console to see the logs.
+        </p>
         <h1>Button</h1>
         <Button
           dispatch={this.handleDispatchButton}

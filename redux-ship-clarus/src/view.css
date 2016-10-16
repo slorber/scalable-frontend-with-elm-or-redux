@@ -19,6 +19,10 @@
   color: white;
 }
 
+.Index-intro {
+  margin: 30px;
+}
+
 .Index-randomGif {
   display: flex;
   justify-content: center;
