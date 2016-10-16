@@ -7,6 +7,21 @@ import * as Ship from 'redux-ship';
 export function dispatch() {
 }
 
+export function simulateControl<Action, Effect, Commit, State>(
+  control: (action: Action) => Ship.Ship<Effect, Commit, State, void>,
+  configs: {[id: string]: {
+    action: Action,
+    snapshot: Ship.Snapshot<Effect, Commit, State>,
+  }}
+): void {
+  Object.keys(configs).forEach(id => {
+    it(id, () => {
+      const {action, snapshot} = configs[id];
+      expect(Ship.simulate(control(action), snapshot)).toEqual(snapshot);
+    });
+  });
+}
+
 export function snapshotApplyCommit<Commit, Patch, State>(
   applyCommit: (state: State, commit: Commit) => Patch,
   configs: {[id: string]: {commit: Commit, state: State}}
