@@ -1,6 +1,8 @@
 // @flow
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {createStore} from 'redux';
+import * as Ship from 'redux-ship';
 
 export function dispatch() {
 }
@@ -26,6 +28,34 @@ export function snapshotComponent<Config>(
       const element = React.createElement(component, configs[id]);
       const tree = renderer.create(element).toJSON();
       expect(tree).toMatchSnapshot();
+    });
+  });
+}
+
+export function snapshotControl<Action, Effect, Commit, Patch, State>(
+  control: (action: Action) => Ship.Ship<Effect, Commit, State, void>,
+  applyCommit: (state: State, commit: Commit) => Patch,
+  reduce: (state: State, patch: Patch) => State,
+  configs: {[id: string]: {
+    action: Action,
+    runEffect: (effect: Effect) => any,
+    state: State,
+  }}
+): void {
+  Object.keys(configs).forEach(id => {
+    it(id, async () => {
+      const {action, runEffect, state} = configs[id];
+      const store = createStore(
+        (state, commit) => reduce(state, applyCommit(state, commit)),
+        state
+      );
+      const {snapshot} = await Ship.run(
+        runEffect,
+        store.dispatch,
+        store.getState,
+        Ship.snap(control(action))
+      );
+      expect(snapshot).toMatchSnapshot();
     });
   });
 }
