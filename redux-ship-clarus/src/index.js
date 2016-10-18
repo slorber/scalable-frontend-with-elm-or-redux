@@ -3,19 +3,15 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Ship from 'redux-ship';
-import {logShip} from 'redux-ship-logger';
+import {logControl} from 'redux-ship-logger';
 import Index from './view';
 import './index.css';
 import store from './store';
 import * as Controller from './controller';
 import * as Effect from './effect';
 
-function* controlWithLog(action: Controller.Action) {
-  yield* logShip(action, Controller.control(action));
-}
-
 function dispatch(action: Controller.Action): void {
-  Ship.run(Effect.run, store.dispatch, store.getState, controlWithLog(action));
+  Ship.run(Effect.run, store.dispatch, store.getState, logControl(Controller.control)(action));
 }
 
 function render() {

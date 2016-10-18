@@ -11,7 +11,7 @@ export function simulateControl<Action, Effect, Commit, State>(
   control: (action: Action) => Ship.Ship<Effect, Commit, State, void>,
   configs: {[id: string]: {
     action: Action,
-    snapshot: Ship.Snapshot<Effect, Commit, State>,
+    snapshot: Ship.Snapshot<Effect, Commit>,
   }}
 ): void {
   Object.keys(configs).forEach(id => {
