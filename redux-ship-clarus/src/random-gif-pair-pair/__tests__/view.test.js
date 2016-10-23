@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
-import * as Test from '../test';
-import * as RandomGifPairPairModel from './model';
-import RandomGifPairPair from './view';
+import * as Test from '../../test';
+import * as RandomGifPairPairModel from '../model';
+import RandomGifPairPair from '../view';
 
 const defaultProps = {
   dispatch: Test.dispatch,

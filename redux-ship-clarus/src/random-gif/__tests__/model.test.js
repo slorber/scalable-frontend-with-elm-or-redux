@@ -1,6 +1,6 @@
 // @flow
-import * as Test from '../test';
-import * as RandomGifModel from './model';
+import * as Test from '../../test';
+import * as RandomGifModel from '../model';
 
 Test.snapshotReduce(RandomGifModel.reduce, {
   LoadStart: {

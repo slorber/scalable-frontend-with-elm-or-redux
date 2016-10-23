@@ -1,10 +1,10 @@
 // @flow
-import * as Test from '../test';
-import * as Effect from '../effect';
-import * as RandomGifController from './controller';
-import * as ButtonModel from '../button/model';
-import * as CounterModel from '../counter/model';
-import * as RandomGifModel from './model';
+import * as Test from '../../test';
+import * as Effect from '../../effect';
+import * as RandomGifController from '../controller';
+import * as ButtonModel from '../../button/model';
+import * as CounterModel from '../../counter/model';
+import * as RandomGifModel from '../model';
 
 const defaultState = {
   button: ButtonModel.initialState,

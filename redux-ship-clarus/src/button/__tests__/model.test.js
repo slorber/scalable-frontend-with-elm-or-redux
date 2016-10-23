@@ -1,6 +1,6 @@
 // @flow
-import * as Test from '../test';
-import * as ButtonModel from './model';
+import * as Test from '../../test';
+import * as ButtonModel from '../model';
 
 Test.snapshotReduce(ButtonModel.reduce, {
   activate: {

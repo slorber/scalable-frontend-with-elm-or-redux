@@ -1,6 +1,6 @@
 // @flow
-import * as Test from '../test';
-import * as CounterModel from './model';
+import * as Test from '../../test';
+import * as CounterModel from '../model';
 
 Test.snapshotReduce(CounterModel.reduce, {
   IncrementByOne: {

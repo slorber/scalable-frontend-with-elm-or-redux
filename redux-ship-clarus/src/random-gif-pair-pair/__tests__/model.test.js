@@ -1,6 +1,6 @@
 // @flow
-import * as Test from '../test';
-import * as RandomGifPairPairModel from './model';
+import * as Test from '../../test';
+import * as RandomGifPairPairModel from '../model';
 
 Test.snapshotReduce(RandomGifPairPairModel.reduce, {
   firstSecond: {
