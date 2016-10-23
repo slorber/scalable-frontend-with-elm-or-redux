@@ -16,7 +16,7 @@ The main idea for the composition in Redux Ship is to separate the actions modif
 * the patches, which represent elementary and local updates;
 * the commits, which are a set of patches applied at the same time.
 
-The aim of this separation is to be more explicit about what we are doing. The naming commit / patch is an analogy with Git: a commit represents the "what", a patch represent the "how". Another difference is that there can be many patches into a commit (as many as modified files).
+The aim of this separation is to be more explicit about what we are doing. The naming commit / patch is an analogy with Git: a commit represents the "what", a patch represent the "how". Another difference is that there can be many patches into a commit (as many as modified files in the case of Git).
 
 For example, when we get a new gif url, we emit the single commit:
 ```js
@@ -98,3 +98,5 @@ and a patch:
 Doing so, we aim to explicit the fact that we:
 * reuse a component into another component (there is a commit in the the commit);
 * have a component which modifies two sub-states (the patch is formed of two sub-patches).
+
+We hope that being explicit in this way helps to write scalable and understable applications.
