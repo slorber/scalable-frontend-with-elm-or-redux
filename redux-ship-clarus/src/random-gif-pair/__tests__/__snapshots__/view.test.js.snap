@@ -1,0 +1,29 @@
+exports[`test default 1`] = `
+<div
+  className="RandomGifPair">
+  <div
+    className="RandomGif">
+    <img
+      alt="waiting logo"
+      className="RandomGif-picture"
+      src="test-file-stub" />
+    <button
+      disabled={false}
+      onClick={[Function anonymous]}>
+      New cats
+    </button>
+  </div>
+  <div
+    className="RandomGif">
+    <img
+      alt="waiting logo"
+      className="RandomGif-picture"
+      src="test-file-stub" />
+    <button
+      disabled={false}
+      onClick={[Function anonymous]}>
+      New dogs
+    </button>
+  </div>
+</div>
+`;

@@ -1,0 +1,234 @@
+exports[`test button 1`] = `
+Object {
+  "button": Object {
+    "status": "red"
+  },
+  "counter": Object {
+    "count": 0
+  },
+  "randomGif": Object {
+    "gifUrl": null,
+    "isLoading": false
+  },
+  "randomGifPair": Object {
+    "first": Object {
+      "gifUrl": null,
+      "isLoading": false
+    },
+    "second": Object {
+      "gifUrl": null,
+      "isLoading": false
+    }
+  },
+  "randomGifPairPair": Object {
+    "first": Object {
+      "first": Object {
+        "gifUrl": null,
+        "isLoading": false
+      },
+      "second": Object {
+        "gifUrl": null,
+        "isLoading": false
+      }
+    },
+    "second": Object {
+      "first": Object {
+        "gifUrl": null,
+        "isLoading": false
+      },
+      "second": Object {
+        "gifUrl": null,
+        "isLoading": false
+      }
+    }
+  }
+}
+`;
+
+exports[`test counter 1`] = `
+Object {
+  "button": Object {
+    "status": "green"
+  },
+  "counter": Object {
+    "count": 1
+  },
+  "randomGif": Object {
+    "gifUrl": null,
+    "isLoading": false
+  },
+  "randomGifPair": Object {
+    "first": Object {
+      "gifUrl": null,
+      "isLoading": false
+    },
+    "second": Object {
+      "gifUrl": null,
+      "isLoading": false
+    }
+  },
+  "randomGifPairPair": Object {
+    "first": Object {
+      "first": Object {
+        "gifUrl": null,
+        "isLoading": false
+      },
+      "second": Object {
+        "gifUrl": null,
+        "isLoading": false
+      }
+    },
+    "second": Object {
+      "first": Object {
+        "gifUrl": null,
+        "isLoading": false
+      },
+      "second": Object {
+        "gifUrl": null,
+        "isLoading": false
+      }
+    }
+  }
+}
+`;
+
+exports[`test randomGif 1`] = `
+Object {
+  "button": Object {
+    "status": "green"
+  },
+  "counter": Object {
+    "count": 0
+  },
+  "randomGif": Object {
+    "gifUrl": null,
+    "isLoading": true
+  },
+  "randomGifPair": Object {
+    "first": Object {
+      "gifUrl": null,
+      "isLoading": false
+    },
+    "second": Object {
+      "gifUrl": null,
+      "isLoading": false
+    }
+  },
+  "randomGifPairPair": Object {
+    "first": Object {
+      "first": Object {
+        "gifUrl": null,
+        "isLoading": false
+      },
+      "second": Object {
+        "gifUrl": null,
+        "isLoading": false
+      }
+    },
+    "second": Object {
+      "first": Object {
+        "gifUrl": null,
+        "isLoading": false
+      },
+      "second": Object {
+        "gifUrl": null,
+        "isLoading": false
+      }
+    }
+  }
+}
+`;
+
+exports[`test randomGifPair 1`] = `
+Object {
+  "button": Object {
+    "status": "green"
+  },
+  "counter": Object {
+    "count": 0
+  },
+  "randomGif": Object {
+    "gifUrl": null,
+    "isLoading": false
+  },
+  "randomGifPair": Object {
+    "first": Object {
+      "gifUrl": null,
+      "isLoading": true
+    },
+    "second": Object {
+      "gifUrl": null,
+      "isLoading": false
+    }
+  },
+  "randomGifPairPair": Object {
+    "first": Object {
+      "first": Object {
+        "gifUrl": null,
+        "isLoading": false
+      },
+      "second": Object {
+        "gifUrl": null,
+        "isLoading": false
+      }
+    },
+    "second": Object {
+      "first": Object {
+        "gifUrl": null,
+        "isLoading": false
+      },
+      "second": Object {
+        "gifUrl": null,
+        "isLoading": false
+      }
+    }
+  }
+}
+`;
+
+exports[`test randomGifPairPair 1`] = `
+Object {
+  "button": Object {
+    "status": "green"
+  },
+  "counter": Object {
+    "count": 0
+  },
+  "randomGif": Object {
+    "gifUrl": null,
+    "isLoading": false
+  },
+  "randomGifPair": Object {
+    "first": Object {
+      "gifUrl": null,
+      "isLoading": false
+    },
+    "second": Object {
+      "gifUrl": null,
+      "isLoading": false
+    }
+  },
+  "randomGifPairPair": Object {
+    "first": Object {
+      "first": Object {
+        "gifUrl": null,
+        "isLoading": false
+      },
+      "second": Object {
+        "gifUrl": null,
+        "isLoading": true
+      }
+    },
+    "second": Object {
+      "first": Object {
+        "gifUrl": null,
+        "isLoading": false
+      },
+      "second": Object {
+        "gifUrl": null,
+        "isLoading": false
+      }
+    }
+  }
+}
+`;

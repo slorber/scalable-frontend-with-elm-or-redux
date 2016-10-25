@@ -1,0 +1,27 @@
+exports[`test default 1`] = `
+<div>
+  <button
+    onClick={[Function anonymous]}
+    style={
+      Object {
+        "backgroundColor": "green"
+      }
+    }>
+    Toggle
+  </button>
+</div>
+`;
+
+exports[`test disabled 1`] = `
+<div>
+  <button
+    onClick={[Function anonymous]}
+    style={
+      Object {
+        "backgroundColor": "red"
+      }
+    }>
+    Toggle
+  </button>
+</div>
+`;

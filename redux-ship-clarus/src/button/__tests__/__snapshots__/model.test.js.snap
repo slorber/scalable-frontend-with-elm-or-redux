@@ -1,0 +1,11 @@
+exports[`test activate 1`] = `
+Object {
+  "status": "green"
+}
+`;
+
+exports[`test desactivate 1`] = `
+Object {
+  "status": "red"
+}
+`;

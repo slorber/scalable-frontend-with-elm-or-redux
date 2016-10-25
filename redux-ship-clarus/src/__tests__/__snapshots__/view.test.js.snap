@@ -1,0 +1,178 @@
+exports[`test default 1`] = `
+<div
+  className="Index">
+  <div
+    className="Index-header">
+    <img
+      alt="logo"
+      className="Index-logo"
+      src="test-file-stub" />
+    <h2>
+      Scalable frontend, with Elm or Redux
+    </h2>
+  </div>
+  <p
+    className="Index-intro">
+    This is a solution to the problem 
+    <a
+      href="https://github.com/slorber/scalable-frontend-with-elm-or-redux">
+      Scalable frontend, with Elm or Redux
+    </a>
+     of 
+    <a
+      href="https://github.com/slorber">
+      Sébastien Lorber
+    </a>
+    .
+    <br />
+    It uses 
+    <a
+      href="https://github.com/clarus/redux-ship">
+      Redux Ship
+    </a>
+    . Open your Javascript console to see the logs.
+  </p>
+  <h1>
+    Button
+  </h1>
+  <div>
+    <button
+      onClick={[Function anonymous]}
+      style={
+        Object {
+          "backgroundColor": "green"
+        }
+      }>
+      Toggle
+    </button>
+  </div>
+  <h1>
+    Counter
+  </h1>
+  <div>
+    <p>
+      Count: 
+      0
+    </p>
+  </div>
+  <h1>
+    Simple
+  </h1>
+  <div
+    className="Index-randomGif">
+    <div
+      className="RandomGif">
+      <img
+        alt="waiting logo"
+        className="RandomGif-picture"
+        src="test-file-stub" />
+      <button
+        disabled={false}
+        onClick={[Function anonymous]}>
+        New dogs
+      </button>
+    </div>
+  </div>
+  <h1>
+    Pair
+  </h1>
+  <div
+    className="RandomGifPair">
+    <div
+      className="RandomGif">
+      <img
+        alt="waiting logo"
+        className="RandomGif-picture"
+        src="test-file-stub" />
+      <button
+        disabled={false}
+        onClick={[Function anonymous]}>
+        New cats
+      </button>
+    </div>
+    <div
+      className="RandomGif">
+      <img
+        alt="waiting logo"
+        className="RandomGif-picture"
+        src="test-file-stub" />
+      <button
+        disabled={false}
+        onClick={[Function anonymous]}>
+        New lemurs
+      </button>
+    </div>
+  </div>
+  <h1>
+    PairPair
+  </h1>
+  <div>
+    <div
+      className="RandomGifPair">
+      <div
+        className="RandomGif">
+        <img
+          alt="waiting logo"
+          className="RandomGif-picture"
+          src="test-file-stub" />
+        <button
+          disabled={false}
+          onClick={[Function anonymous]}>
+          New unicorns
+        </button>
+      </div>
+      <div
+        className="RandomGif">
+        <img
+          alt="waiting logo"
+          className="RandomGif-picture"
+          src="test-file-stub" />
+        <button
+          disabled={false}
+          onClick={[Function anonymous]}>
+          New minions
+        </button>
+      </div>
+    </div>
+    <div
+      className="RandomGifPair">
+      <div
+        className="RandomGif">
+        <img
+          alt="waiting logo"
+          className="RandomGif-picture"
+          src="test-file-stub" />
+        <button
+          disabled={false}
+          onClick={[Function anonymous]}>
+          New pokemon
+        </button>
+      </div>
+      <div
+        className="RandomGif">
+        <img
+          alt="waiting logo"
+          className="RandomGif-picture"
+          src="test-file-stub" />
+        <button
+          disabled={false}
+          onClick={[Function anonymous]}>
+          New lizards
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="Index-footer">
+    <hr />
+    <p>
+      Built with 
+      <a
+        href="https://github.com/clarus/redux-ship">
+        Redux Ship
+      </a>
+       © Guillaume Claret
+    </p>
+  </div>
+</div>
+`;

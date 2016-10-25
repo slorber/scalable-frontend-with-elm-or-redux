@@ -1,0 +1,25 @@
+exports[`test first 1`] = `
+Object {
+  "first": Object {
+    "gifUrl": null,
+    "isLoading": true
+  },
+  "second": Object {
+    "gifUrl": null,
+    "isLoading": false
+  }
+}
+`;
+
+exports[`test second 1`] = `
+Object {
+  "first": Object {
+    "gifUrl": null,
+    "isLoading": false
+  },
+  "second": Object {
+    "gifUrl": null,
+    "isLoading": true
+  }
+}
+`;
