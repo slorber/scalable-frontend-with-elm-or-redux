@@ -1,6 +1,6 @@
 # Redux Counter Example
 
-Example to use [Redux-fly](https://github.com/MrEfrem/redux-fly) for building scalable Redux.<br/>
+Example to use [Redux-fly](https://github.com/MrEfrem/redux-fly) for building scalable React + Redux application.<br/>
 This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ## Available Scripts
