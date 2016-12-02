@@ -1,38 +1,41 @@
 import React, { PropTypes } from 'react'
 import Counter from './Counter'
 import Button, { checkIsActive } from './Button'
-import NewGif, { actionPrivateNewGif } from './RandomGif'
+import RandomGIf, { actionPrivateNewGif } from './RandomGif'
+import PairGif from './PairGif'
+import PairOfPairGif from './PairOfPairGif'
 
-const gifStyle = { float: 'left', marginRight: '20px' }
-
-const newGifActionPrefix = 'RandomGif'
+const randomGifActionPrefix = 'RandomGif'
 
 const App = (props, { store }) => (
   <div>
-    <h2>1. NewGif</h2>
+    <h2>1. RandomGIf</h2>
 
     <h3>1.1 Single</h3>
-    <NewGif reduxMountPath="newGif" reduxActionPrefix={newGifActionPrefix} />
+    <RandomGIf 
+      reduxMountPath="randomGif" 
+      reduxActionPrefix={randomGifActionPrefix} 
+    />
     <hr/>
 
     <h3>1.2 Pair</h3>
-    <NewGif reduxMountPath="pairGifs first" style={gifStyle} reduxActionPrefix={newGifActionPrefix} />
-    <NewGif reduxMountPath="pairGifs second" reduxActionPrefix={newGifActionPrefix} />
-    <hr style={{ clear: 'both' }} />
+    <PairGif reduxActionPrefix={randomGifActionPrefix}/>    
+    <hr/>
 
     <h3>1.3 Pair of pair</h3>
-    <NewGif reduxMountPath="pairOfPair firstPairGifs first" style={gifStyle} reduxActionPrefix={newGifActionPrefix} />
-    <NewGif reduxMountPath="pairOfPair firstPairGifs second" style={gifStyle} reduxActionPrefix={newGifActionPrefix} />
-    <NewGif reduxMountPath="pairOfPair secondPairGifs first" style={gifStyle} reduxActionPrefix={newGifActionPrefix} />
-    <NewGif reduxMountPath="pairOfPair secondPairGifs second" reduxActionPrefix={newGifActionPrefix} />
-    <hr style={{ clear: 'both' }} />
+    <PairOfPairGif reduxActionPrefix={randomGifActionPrefix}/>
+    <hr style={{ clear: 'both' }}/>
 
     <h2>2. Button</h2>
-    <Button reduxMountPath="button" />
+    <Button reduxMountPath="button"/>
     <hr/>
 
     <h2>3. Counter</h2>
-    <Counter reduxMountPath="counter" buttonIsActive={() => checkIsActive('button', store.getState())} incrementAction={actionPrivateNewGif(newGifActionPrefix)} />
+    <Counter 
+      reduxMountPath="counter" 
+      buttonIsActive={() => checkIsActive('button', store.getState())} 
+      incrementAction={actionPrivateNewGif(randomGifActionPrefix)} 
+    />
     <hr/>
   </div>
 );
