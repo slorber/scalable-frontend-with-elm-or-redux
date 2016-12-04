@@ -7,7 +7,7 @@
     "enzyme": "^2.6.0",
     "gh-pages": "^0.12.0",
     "react-addons-test-utils": "^15.3.2",
-    "react-scripts": "0.7.0",
+    "react-scripts": "0.8.1",
     "rimraf": "^2.5.4"
   },
   "dependencies": {
@@ -17,7 +17,7 @@
     "react-redux": "^4.4.5",
     "redbox-react": "^1.3.3",
     "redux": "^3.6.0",
-    "redux-fly": "*"
+    "redux-fly": "^0.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

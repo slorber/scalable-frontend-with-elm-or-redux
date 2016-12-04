@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import Counter from './Counter'
 import Button, { checkIsActive } from './Button'
-import RandomGIf, { actionPrivateNewGif } from './RandomGif'
+import RandomGIf, { newGifAction } from './RandomGif'
 import PairGif from './PairGif'
 import PairOfPairGif from './PairOfPairGif'
 
@@ -12,18 +12,18 @@ const App = (props, { store }) => (
     <h2>1. RandomGIf</h2>
 
     <h3>1.1 Single</h3>
-    <RandomGIf 
-      reduxMountPath="randomGif" 
-      reduxActionPrefix={randomGifActionPrefix} 
+    <RandomGIf
+      reduxMountPath="randomGif"
+      reduxActionPrefix={randomGifActionPrefix}
     />
     <hr/>
 
     <h3>1.2 Pair</h3>
-    <PairGif reduxActionPrefix={randomGifActionPrefix}/>    
+    <PairGif randomGifActionPrefix={randomGifActionPrefix}/>
     <hr/>
 
     <h3>1.3 Pair of pair</h3>
-    <PairOfPairGif reduxActionPrefix={randomGifActionPrefix}/>
+    <PairOfPairGif randomGifActionPrefix={randomGifActionPrefix}/>
     <hr style={{ clear: 'both' }}/>
 
     <h2>2. Button</h2>
@@ -31,14 +31,14 @@ const App = (props, { store }) => (
     <hr/>
 
     <h2>3. Counter</h2>
-    <Counter 
-      reduxMountPath="counter" 
-      buttonIsActive={() => checkIsActive('button', store.getState())} 
-      incrementAction={actionPrivateNewGif(randomGifActionPrefix)} 
+    <Counter
+      reduxMountPath="counter"
+      buttonIsActive={() => checkIsActive('button', store.getState())}
+      incrementAction={newGifAction(randomGifActionPrefix)}
     />
     <hr/>
   </div>
-);
+)
 
 App.contextTypes = {
   store: PropTypes.object.isRequired
