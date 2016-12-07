@@ -8,19 +8,20 @@ const Counter = ({ reduxState: { counter } }) => (
 Counter.propTypes = {
   reduxState: PropTypes.object.isRequired,
   buttonIsActive: PropTypes.func.isRequired,
-  incrementAction: PropTypes.string.isRequired    
+  incrementAction: PropTypes.string.isRequired
 }
 
 export default createReducer({
   initialState: {
     counter: 0
   },
-  listenActions: (props) => ({
-    [props.incrementAction]: (state) => {
+  listenActions: (state, action, props) => {
+    if (action.type === props.incrementAction) {
       if (state.counter >= 10 && props.buttonIsActive()) {
         return { counter: state.counter + 2 }
       }
       return { counter: state.counter + 1 }
     }
-  })      
+    return state
+  }
 })(Counter)

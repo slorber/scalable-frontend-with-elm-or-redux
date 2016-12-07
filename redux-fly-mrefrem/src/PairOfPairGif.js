@@ -5,29 +5,29 @@ import RandomGif from './RandomGif'
 const gifStyle = { float: 'left', marginRight: '20px' }
 const needGetGifAction = 'pairOfPairGif/NEED-GET-GIF'
 
-const PairOfPairGif = ({ reduxActionPrefix, dispatch }) => (
+const PairOfPairGif = ({ randomGifActionPrefix, dispatch }) => (
   <div>
     <RandomGif
       reduxMountPath="pairOfPair firstPairGifs first"
       style={gifStyle}
-      reduxActionPrefix={reduxActionPrefix}
+      reduxActionPrefix={randomGifActionPrefix}
       needGetGifAction={needGetGifAction}
     />
     <RandomGif
       reduxMountPath="pairOfPair firstPairGifs second"
       style={gifStyle}
-      reduxActionPrefix={reduxActionPrefix}
+      reduxActionPrefix={randomGifActionPrefix}
       needGetGifAction={needGetGifAction}
     />
     <RandomGif
       reduxMountPath="pairOfPair secondPairGifs first"
       style={gifStyle}
-      reduxActionPrefix={reduxActionPrefix}
+      reduxActionPrefix={randomGifActionPrefix}
       needGetGifAction={needGetGifAction}
     />
     <RandomGif
       reduxMountPath="pairOfPair secondPairGifs second"
-      reduxActionPrefix={reduxActionPrefix}
+      reduxActionPrefix={randomGifActionPrefix}
       needGetGifAction={needGetGifAction}
     />
 
@@ -40,7 +40,7 @@ const PairOfPairGif = ({ reduxActionPrefix, dispatch }) => (
 )
 
 PairOfPairGif.propTypes = {
-  reduxActionPrefix: PropTypes.string.isRequired,
+  randomGifActionPrefix: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
