@@ -92,3 +92,8 @@ If you would like to propose your solution, don't hesitate to.
 - Give a good name to your solution. For me something like `redux-elmish-saga-slorber` or `elm-2mailboxes-slorber`
 - Create an issue with your solution name, to get feedbacks
 - Make a pull request, create a folder with your solution name
+
+# Hire a freelance expert
+
+Looking for a React/ReactNative freelance expert with more than 5 years production experience?
+Contact me from my [website](https://sebastienlorber.com/) or with [Twitter](https://twitter.com/sebastienlorber).
